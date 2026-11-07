@@ -30,3 +30,5 @@ Open `http://127.0.0.1:5000/` in your browser and `http://127.0.0.1:5000/api` to
 - Add the screenshots and your own brief explanation to the documentation.
 - Create a GitHub repository and add its URL to the documentation.
 - Zip the complete project folder. Do not submit `.env`; submit `.env.example` instead.
+
+Git and GitHub Assignment - Initial Flask project setup by Naveen-Painuly.
