@@ -16,5 +16,11 @@
     "name": "Kabir",
     "course": "Flask",
     "status": "Pending"
-  }
+  },
+  {
+  "id": 4,
+  "name": "Ananya",
+  "course": "AWS",
+  "status": "Completed"
+}
 ]
