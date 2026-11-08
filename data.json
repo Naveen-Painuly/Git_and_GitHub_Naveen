@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Aarav",
     "course": "DevOps",
-    "status": "In Progress"
+    "status": "Completed"
   },
   {
     "id": 2,
@@ -18,9 +18,9 @@
     "status": "Pending"
   },
   {
-  "id": 4,
-  "name": "Ananya",
-  "course": "AWS",
-  "status": "Completed"
-}
+    "id": 4,
+    "name": "Meera",
+    "course": "AWS",
+    "status": "In Progress"
+  }
 ]
