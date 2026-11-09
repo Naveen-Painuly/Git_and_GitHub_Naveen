@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My To-Do Application</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 30px 15px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #243b55;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin: 18px 0 8px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            background: #243b55;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #141e30;
+        }
+
+        .error {
+            color: #b00020;
+            background: #ffe8e8;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .existing-form {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>My To-Do Application</h1>
+        <p class="subtitle">Add and manage your tasks efficiently.</p>
+
+        <h2>Add a New To-Do Item</h2>
+
+        <form action="/submittodoitem" method="POST">
+
+            <label for="itemName">Item Name</label>
+            <input
+                type="text"
+                id="itemName"
+                name="itemName"
+                placeholder="Enter item name"
+                required
+            >
+
+            <label for="itemDescription">Item Description</label>
+            <textarea
+                id="itemDescription"
+                name="itemDescription"
+                rows="5"
+                placeholder="Enter item description"
+                required
+            ></textarea>
+
+            <button type="submit">Submit To-Do Item</button>
+
+        </form>
+
+        <!-- Existing form functionality retained -->
+        <div class="existing-form">
+
+            <h2>Contact Form</h2>
+
+            {% if error %}
+                <div class="error">{{ error }}</div>
+            {% endif %}
+
+            <form action="/submit" method="POST">
+
+                <label for="name">Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value="{{ form_data.get('name', '') }}"
+                    required
+                >
+
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value="{{ form_data.get('email', '') }}"
+                    required
+                >
+
+                <label for="message">Message</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="3"
+                    required
+                >{{ form_data.get('message', '') }}</textarea>
+
+                <button type="submit">Submit Contact Form</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
