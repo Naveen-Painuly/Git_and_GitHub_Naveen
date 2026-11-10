@@ -78,6 +78,34 @@ def submit():
             form_data=form_data,
         ), 500
 
+@app.route("/submittodoitem", methods=["POST"])
+def submit_todo_item():
+    item_name = request.form.get("itemName", "").strip()
+    item_description = request.form.get("itemDescription", "").strip()
+
+    # Validate the submitted form fields
+    if not item_name or not item_description:
+        return jsonify({
+            "error": "itemName and itemDescription are required."
+        }), 400
+
+    # Prepare the document to be stored in MongoDB
+    document = {
+        "itemName": item_name,
+        "itemDescription": item_description
+    }
+
+    try:
+        collection = get_mongo_collection()
+        collection.insert_one(document)
+
+        return redirect(url_for("success"))
+
+    except (PyMongoError, RuntimeError, ValueError) as error:
+        app.logger.exception("Unable to save To-Do item")
+        return jsonify({
+            "error": f"Could not save To-Do item: {error}"
+        }), 500
 
 @app.route("/success")
 def success():
